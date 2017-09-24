@@ -1,0 +1,304 @@
+body {
+	margin-top: 70px;
+	color: black;
+}
+
+h5 {
+	font-family: 'Satisfy', cursive;
+	font-size: 25px;
+	text-transform: lowercase;
+	margin-top: 0px;
+	opacity: 0.7;
+}
+
+h3 {
+	margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    font-size: 20px;
+}
+
+p {
+	font-weight: 300;
+}
+
+.homepage-header {
+	width: 100%;
+	text-align: center;
+	margin-top: -3em;
+	margin-bottom: 2em;
+}
+
+.homepage-header h1 {
+	font-family: 'Satisfy', cursive;
+	font-size: 80px;
+	text-transform: lowercase;
+}
+
+.homepage-header img {
+	width: 5%;
+}
+
+.other-header img {
+	width: 2.5%;
+}
+
+.other-header h1 {
+	font-family: 'Satisfy', cursive;
+	font-size: 50px;
+	text-transform: lowercase;
+}
+
+.other-header {
+	width: 100%;
+	text-align: center;
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+
+
+/*Should just be for on scroll     */
+.navbar-default {
+	background-color: #fff;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
+}
+
+.jumbotron {
+	width: 70%;
+	margin-left: 15%;
+	padding: 15px;
+	border-radius: 0;
+}
+
+@media (min-width: 768px){
+	.container .jumbotron {
+		padding: 15px;
+		border-radius: 0;
+	}
+}
+
+.jumbotron img {
+	width: 100%;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+        letter-spacing: 0.2em;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+
+#heading {
+	text-align: center;
+}
+#links {
+	list-style: none;
+    display: inline-flex;
+    letter-spacing: 0.2em;
+    margin-left: -2.5em;
+}
+
+#links li {
+	margin: 1em;
+}
+
+#links a {
+	color: grey;
+}
+
+#links a:hover {
+	color: black;
+	text-decoration: none;
+}
+h4 {
+	text-transform: uppercase;
+	letter-spacing: 0.25em;
+}
+
+h2 {
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	text-align: center;
+}
+
+.date {
+	width: 100%;
+}
+
+.date h2, h4 {
+	text-align: center; 
+}
+
+.date img {
+	width: 10%;
+	margin-left: 45%;
+}
+
+.story {
+	width: 80%;
+	margin-top: 3em;
+	margin-left: 10%;
+}
+
+.hidden {
+	display: none;
+}
+
+.hotel {
+	text-align: center;
+}
+
+.rsvp {
+	text-align: center;
+	margin-bottom: 8em;
+	margin-top: 2em;
+}
+
+.rsvp h3 {
+	text-transform: uppercase;
+	font-weight: 200;
+	letter-spacing: 0.2em;
+}
+
+.rsvp input {
+	width: 35%;
+	padding: 0.25em;
+	margin: 1em;
+}
+
+.rsvp button {
+	width: 35%;
+	padding: 0.5em;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+}
+
+.crop {
+	width: 250px;
+	height: 250px;
+	overflow: hidden;
+}
+
+.crop img {
+    width: 100%;
+    height: auto;
+}
+/*Circle Around Numbers*/
+
+.numberCircle {
+    border-radius: 50%;
+    width: 30px; 
+    font-size: 15px;
+    color: #fff;
+    background-color: black;
+    border: 2px solid black;
+    float: left;
+    margin-right: 2em;
+    margin-bottom: 5em;
+}
+.numberCircle span {
+    text-align: center;
+    line-height: 25px;
+    display: block;
+}
+
+.event {
+	margin-bottom: 3em;
+}
+
+.footer {
+	text-align: center;
+	padding: 2em;
+	margin-bottom: 1em;
+	letter-spacing: 0.2em;
+	font-weight: 300;
+}
+
+.date h4 {
+	font-weight: 300;
+}
+
+.align-bottom {
+	margin-top: 6.5em;
+}
+
+.row {
+	margin-bottom: 20px;
+}
+
+.hotel p {
+	font-weight: 300;
+	margin-top: 10px;
+}
+
+#countdown {
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    font-size: 1.5em;
+    background-color: lightpink;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.image1 {
+	background-image: url("./Riley.jpg");
+}
+
+.image2 {
+	background-image: url("./Chelsea.jpg");
+}
+
+.image3 {
+	background-image: url("./Claire.jpg");
+}
+
+.image4 {
+	background-image: url("./Athena.jpg");
+}
+
+.image5 {
+	background-image: url("./Courtney.jpg");
+}
+
+.image6 {
+	background-image: url("./lewman_joseph.jpg");
+}
+
+.image7 {
+	background-image: url("./gauthier_andrew.jpg");
+}
+
+.image8 {
+	background-image: url("./chase_gavin.jpg");
+}
+
+.image9 {
+	background-image: url("./kennedy_vinny.jpg");
+}
+
+.image10 {
+	background-image: url("./thompson_zach.jpg");
+}
+
+.image11 {
+	background-image: url("./croney_devin.jpg");
+}
+
+.image {
+  width: 250px;
+  height: 250px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.thumbnail {
+	width: 260px;
+}
