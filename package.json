@@ -1,0 +1,22 @@
+{
+  "name": "coulter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/claire-coulter/coulter-wedding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/claire-coulter/coulter-wedding/issues"
+  },
+  "homepage": "https://gitlab.com/claire-coulter/coulter-wedding#README",
+  "dependencies": {
+    "lightbox2": "^2.9.0"
+  }
+}
