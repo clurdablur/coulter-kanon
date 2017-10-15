@@ -1,7 +1,7 @@
 {
-  "name": "coulter",
+  "name": "coulter-wedding-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ericka and Andrew's wedding website",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,13 +10,21 @@
     "type": "git",
     "url": "git+ssh://git@gitlab.com/claire-coulter/coulter-wedding.git"
   },
-  "author": "",
+  "author": "Claire Coulter",
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/claire-coulter/coulter-wedding/issues"
   },
   "homepage": "https://gitlab.com/claire-coulter/coulter-wedding#README",
   "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
     "lightbox2": "^2.9.0"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [
+    "wedding",
+    "coulter",
+    "kanon"
+  ]
 }
