@@ -40,6 +40,10 @@ p {
 	width: 5%;
 }
 
+.other-header a {
+    color: black;
+    text-decoration: none;
+}
 .other-header img {
 	width: 2.5%;
 }
