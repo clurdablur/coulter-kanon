@@ -330,7 +330,7 @@ h2 {
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
     #main .thumbnail {
-        margin-left: 10%;
+        margin-left: 12%;
     }
 
 }
