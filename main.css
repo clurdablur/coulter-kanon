@@ -306,3 +306,31 @@ h2 {
 .thumbnail {
 	width: 260px;
 }
+
+.thumbnail img {
+    height: 250px;
+}
+
+#main .thumbnail {
+    width: 540px;
+    height: 800px;
+    margin-left: 26.5%
+}
+
+#main img {
+    height: 790px;
+}
+
+.photos .thumbnail {
+    margin-left: 13%;
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    #main .thumbnail {
+        margin-left: 12%;
+    }
+
+}
