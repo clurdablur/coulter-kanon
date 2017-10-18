@@ -83,11 +83,11 @@ app.get('/registry', function(req, res){
 
 
 // AUTH ROUTES
-app.get('/register', function(req, res){
+app.get('/register', isLoggedIn, function(req, res){
     res.render('register');
 });
 
-app.post('/register', function(req, res){
+app.post('/register', isLoggedIn, function(req, res){
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
@@ -100,11 +100,11 @@ app.post('/register', function(req, res){
     });
 });
 
-app.get('/login', isLoggedIn, function(req, res){
+app.get('/login', function(req, res){
     res.render('login');
 });
 
-app.post('/login', isLoggedIn, passport.authenticate("local", 
+app.post('/login', passport.authenticate("local", 
     {
         successRedirect: "/guest-list",
         failureRedirect: "/login"
