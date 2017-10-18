@@ -49,7 +49,7 @@ app.post('/rsvp', function(req, res){
     });
 });
 
-app.get('/guest-list', isLoggedIn, (req, res){
+app.get('/guest-list', isLoggedIn, function(req, res){
     // Get all guests from DB
     Guest.find({}, function(err, guests){
         if(err){
@@ -59,13 +59,6 @@ app.get('/guest-list', isLoggedIn, (req, res){
         }
     });
 });
-
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect('/login');
-}
 
 app.get('/photos', function(req, res){
   res.render('photos');
@@ -117,6 +110,12 @@ app.post('/login', passport.authenticate("local",
     }), function(req, res){
 });
 
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/login');
+}
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
