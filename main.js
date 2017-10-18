@@ -7,7 +7,8 @@ var express = require("express"),
     Guest = require("./models/guest"),
     User = require("./models/user")
 
-mongoose.connect("mongodb://localhost/wedding_rsvps", {useMongoClient: true});
+//mongoose.connect("mongodb://localhost/wedding_rsvps", {useMongoClient: true});
+mongoose.connect("mongodb://claire:Andrew93@ds125255.mlab.com:25255/wedding_rsvps");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
@@ -82,11 +83,11 @@ app.get('/registry', function(req, res){
 
 
 // AUTH ROUTES
-app.get('/register', isLoggedIn, function(req, res){
+app.get('/register', function(req, res){
     res.render('register');
 });
 
-app.post('/register', isLoggedIn, function(req, res){
+app.post('/register', function(req, res){
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
@@ -99,11 +100,11 @@ app.post('/register', isLoggedIn, function(req, res){
     });
 });
 
-app.get('/login', function(req, res){
+app.get('/login', isLoggedIn, function(req, res){
     res.render('login');
 });
 
-app.post('/login', passport.authenticate("local", 
+app.post('/login', isLoggedIn, passport.authenticate("local", 
     {
         successRedirect: "/guest-list",
         failureRedirect: "/login"
