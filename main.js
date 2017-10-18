@@ -1,15 +1,35 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
+var express = require("express"),
+    app = express(),
+    bodyParser = require("body-parser"),
+    mongoose = require("mongoose")
 
+mongoose.connect("mongodb://localhost/wedding_rsvps", {useMongoClient: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
 
-var guests = [
-    {first_name: 'Andrew', last_name: 'Coulter', attending: 'true', number_attending: '2'},
-    {first_name: 'Glenda', last_name: 'Bland', attending: 'false', number_attending: ''},
-];
+
+// SCHEMA SETUP
+var guestSchema = new mongoose.Schema({
+    first_name: String,
+    last_name: String,
+    attending: Boolean,
+    number_attending: Number
+});
+
+var Guest = mongoose.model("Guest", guestSchema);
+
+// Guest.create({
+//     first_name: 'Glenda',
+//     last_name: 'Bland',
+//     attending: false,
+// },function(err, guest){
+//     if(err){
+//         console.log(err);
+//     } else{
+//         console.log(guest);
+//     }
+// });
 
 app.get('/', function(req, res){
   res.render('index');
@@ -25,13 +45,26 @@ app.post('/rsvp', function(req, res){
     var attending = req.body.attending;
     var number_attending = req.body.number_attending;
     var newGuest = {first_name: first_name, last_name: last_name, attending: attending, number_attending: number_attending}
-    guests.push(newGuest);
-    res.redirect('/guests');
+    // Create a new guest and save to DB
+    Guest.create(newGuest, function(err, newlyCreated){
+        if(err){
+            console.log(err);
+        } else{
+            res.redirect('/rsvp');
+        }
+    });
 });
 
-app.get('/guests', function(req, res){
-    res.render('guests', {guests: guests});
-})
+app.get('/guest-list', function(req, res){
+    // Get all guests from DB
+    Guest.find({}, function(err, guests){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('guests', {guests: guests});
+        }
+    });
+});
 
 app.get('/photos', function(req, res){
   res.render('photos');
