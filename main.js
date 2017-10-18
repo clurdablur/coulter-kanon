@@ -1,35 +1,29 @@
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
-    mongoose = require("mongoose")
+    mongoose = require("mongoose"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
+    Guest = require("./models/guest"),
+    User = require("./models/user")
 
 mongoose.connect("mongodb://localhost/wedding_rsvps", {useMongoClient: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
 
+// PASSPORT CONFIGURATION
+app.use(require("express-session")({
+    secret: 'Andrew loves Ericka!',
+    resave: false,
+    saveUninitialized: false
+}));
 
-// SCHEMA SETUP
-var guestSchema = new mongoose.Schema({
-    first_name: String,
-    last_name: String,
-    attending: Boolean,
-    number_attending: Number
-});
-
-var Guest = mongoose.model("Guest", guestSchema);
-
-// Guest.create({
-//     first_name: 'Glenda',
-//     last_name: 'Bland',
-//     attending: false,
-// },function(err, guest){
-//     if(err){
-//         console.log(err);
-//     } else{
-//         console.log(guest);
-//     }
-// });
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.get('/', function(req, res){
   res.render('index');
@@ -55,7 +49,7 @@ app.post('/rsvp', function(req, res){
     });
 });
 
-app.get('/guest-list', function(req, res){
+app.get('/guest-list', isLoggedIn, (req, res){
     // Get all guests from DB
     Guest.find({}, function(err, guests){
         if(err){
@@ -65,6 +59,13 @@ app.get('/guest-list', function(req, res){
         }
     });
 });
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/login');
+}
 
 app.get('/photos', function(req, res){
   res.render('photos');
@@ -85,6 +86,37 @@ app.get('/travel', function(req, res){
 app.get('/registry', function(req, res){
   res.render('registry');
 });
+
+
+// AUTH ROUTES
+app.get('/register', isLoggedIn, function(req, res){
+    res.render('register');
+});
+
+app.post('/register', isLoggedIn, function(req, res){
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render('register');
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect('/guest-list');
+        });
+    });
+});
+
+app.get('/login', function(req, res){
+    res.render('login');
+});
+
+app.post('/login', passport.authenticate("local", 
+    {
+        successRedirect: "/guest-list",
+        failureRedirect: "/login"
+    }), function(req, res){
+});
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
