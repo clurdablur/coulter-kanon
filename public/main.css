@@ -166,13 +166,17 @@ h2 {
 	margin-top: 2em;
 }
 
+.rsvp .left-space {
+    margin-left: 3em;
+}
+
 .rsvp h3 {
 	text-transform: uppercase;
 	font-weight: 200;
 	letter-spacing: 0.2em;
 }
 
-.rsvp input {
+.rsvp .text {
 	width: 35%;
 	padding: 0.25em;
 	margin: 1em;
@@ -183,6 +187,7 @@ h2 {
 	padding: 0.5em;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;
+    margin-top: 1em;
 }
 
 .crop {

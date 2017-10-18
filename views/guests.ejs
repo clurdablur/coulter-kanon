@@ -1,0 +1,9 @@
+<h1>Guest List</h1>
+
+<% guests.forEach(function(guest){ %>
+    <div>
+        <h4><%=guest.first_name %> <%=guest.last_name %></h4>
+        <li>Attending: <%=guest.attending%></li>
+        <li>Number of Guests: <%=guest.number_attending%></li>
+    </div>
+<% }); %>

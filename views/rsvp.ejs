@@ -67,11 +67,14 @@
 			<h2>You're Invited</h2>
 			<div class="smallDivider" style="display: inline-block; margin: 0 auto; height: 50px; width: 100%; background-image: url(&quot;https://d3t14gfu9ehll4.cloudfront.net/themes/e5d8f5c4-878f-410b-84dd-6842ee8b93f6/root_SmallDivider_u26sLqo.png&quot;); background-size: contain; background-position: center center; background-repeat: no-repeat;"></div>
 		</div>
-		<div class="rsvp">
-			<h3>Enter the Name on Your Invitation</h3>
-			<input type="text" name="rsvp" placeholder="e.g. John and Jane Doe"><br>
-			<button>Find RSVP</button>
-		</div>
+		<form class="rsvp" action="/rsvp" method="POST">
+			<input type="radio" name="attending" value="true"> Accepts 
+			<input class="left-space" type="radio" name="attending" value="false"> Regrets<br>
+			<input class="text" type="text" name="first_name" placeholder="First Name"><br>
+			<input class="text" type="text" name="last_name" placeholder="Last Name"><br>
+			<input class="text" type="number" name="number_attending" min="0" max="6" placeholder="Number Attending"><br>
+			<button>RSVP</button>
+		</form>
 
 		
 	</div>
