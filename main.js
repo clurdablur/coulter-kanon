@@ -7,8 +7,8 @@ var express = require("express"),
     Guest = require("./models/guest"),
     User = require("./models/user")
 
-//mongoose.connect("mongodb://localhost/wedding_rsvps", {useMongoClient: true});
-mongoose.connect("mongodb://claire:Andrew93@ds125255.mlab.com:25255/wedding_rsvps");
+mongoose.connect("mongodb://localhost/wedding_rsvps", {useMongoClient: true});
+//mongoose.connect("mongodb://claire:Andrew93@ds125255.mlab.com:25255/wedding_rsvps");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.set("view engine", "ejs");
